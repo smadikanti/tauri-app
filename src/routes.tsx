@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
 import { AppLayout } from '@/pages/layouts/app-layout';
 import SettingsLayout from '@/pages/settings/layout';
@@ -15,6 +15,7 @@ import useGlobalEventListener from './useGlobalEventListener';
 import GeneralSettingsPage from './pages/settings/general/general-page';
 import OnboardingPage from './pages/onboarding/onboarding-page';
 import SettingsGoalsPage from './pages/settings/goals/goals-page';
+import SuperMentorPage from './pages/supermentor/app/app-page';
 
 export function AppRoutes() {
   useGlobalEventListener();
@@ -37,7 +38,8 @@ export function AppRoutes() {
             <Route path="goals" element={<SettingsGoalsPage />} />
             <Route path="appearance" element={<SettingsAppearancePage />} />
           </Route>
-          <Route path="*" element={<h1>Not Found</h1>} />
+          <Route path="supermentor" element={<SuperMentorPage />} />
+          <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

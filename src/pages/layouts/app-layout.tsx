@@ -29,6 +29,11 @@ const navigation: NavigationProps = {
       title: 'Settings',
       href: '/settings/general',
     },
+    {
+      icon: <Icons.Settings className="h-5 w-5" />,
+      title: 'SuperMentor App',
+      href: '/supermentor',
+    },
   ],
   secondary: [],
 };
@@ -45,14 +50,16 @@ const AppLayout = () => {
     return null;
   }
 
-  const redirectToOnboarding = ['/settings/general', '/settings/accounts', '/onboarding'];
+  const redirectToOnboarding = ['/settings/general', '/settings/accounts', '/onboarding', '/supermentor'];
+  const isSupermenterPage = location.pathname === '/supermentor';
 
-  if (!settings?.baseCurrency && !redirectToOnboarding.includes(location.pathname)) {
+  if (!settings?.baseCurrency && !redirectToOnboarding.includes(location.pathname) && !isSupermenterPage) {
     return <Navigate to="/onboarding?step=0" />;
   }
-  if (!accounts?.length && !redirectToOnboarding.includes(location.pathname)) {
+  if (!accounts?.length && !redirectToOnboarding.includes(location.pathname) && !isSupermenterPage) {
     return <Navigate to="/onboarding?step=1" />;
   }
+
   return (
     <div className="flex min-h-screen rounded-xl border bg-background">
       <SidebarNav navigation={navigation} />
@@ -65,7 +72,6 @@ const AppLayout = () => {
         </main>
       </div>
       <Toaster />
-      {/* <TailwindIndicator /> */}
     </div>
   );
 };

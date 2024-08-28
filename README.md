@@ -1,4 +1,3 @@
-
 <div align="center">
 
 [<img src="./public/button-buy-me-a-coffee.png" width="150" alt="Buy me a coffee button"/>](https://www.buymeacoffee.com/afadil)
@@ -51,6 +50,8 @@ Ensure you have the following installed on your machine:
   ```bash
   pnpm tauri dev
   ```
+
+  This command starts the Vite development server with Hot Module Replacement (HMR) enabled, allowing for live updates as you modify your React code.
 
 - **Build for Production**:
 
